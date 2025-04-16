@@ -6,25 +6,29 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		7839AECD2DAF5692008B4EE6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7839AECC2DAF5692008B4EE6 /* SnapKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
-		7839AE502DAF4D91008B4EE6 /* WeatherApp_BY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp_BY.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7839AEAC2DAF5628008B4EE6 /* WeatherApp_BY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp_BY.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		7839AE652DAF4D91008B4EE6 /* Exceptions for "WeatherApp_BY" folder in "WeatherApp_BY" target */ = {
+		7839AEBE2DAF5629008B4EE6 /* Exceptions for "WeatherApp_BY" folder in "WeatherApp_BY" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 7839AE4F2DAF4D91008B4EE6 /* WeatherApp_BY */;
+			target = 7839AEAB2DAF5628008B4EE6 /* WeatherApp_BY */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		7839AE522DAF4D91008B4EE6 /* WeatherApp_BY */ = {
+		7839AEAE2DAF5628008B4EE6 /* WeatherApp_BY */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				7839AE652DAF4D91008B4EE6 /* Exceptions for "WeatherApp_BY" folder in "WeatherApp_BY" target */,
+				7839AEBE2DAF5629008B4EE6 /* Exceptions for "WeatherApp_BY" folder in "WeatherApp_BY" target */,
 			);
 			path = WeatherApp_BY;
 			sourceTree = "<group>";
@@ -32,28 +36,29 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7839AE4D2DAF4D91008B4EE6 /* Frameworks */ = {
+		7839AEA92DAF5628008B4EE6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7839AECD2DAF5692008B4EE6 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7839AE472DAF4D91008B4EE6 = {
+		7839AEA32DAF5628008B4EE6 = {
 			isa = PBXGroup;
 			children = (
-				7839AE522DAF4D91008B4EE6 /* WeatherApp_BY */,
-				7839AE512DAF4D91008B4EE6 /* Products */,
+				7839AEAE2DAF5628008B4EE6 /* WeatherApp_BY */,
+				7839AEAD2DAF5628008B4EE6 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		7839AE512DAF4D91008B4EE6 /* Products */ = {
+		7839AEAD2DAF5628008B4EE6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7839AE502DAF4D91008B4EE6 /* WeatherApp_BY.app */,
+				7839AEAC2DAF5628008B4EE6 /* WeatherApp_BY.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,64 +66,68 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7839AE4F2DAF4D91008B4EE6 /* WeatherApp_BY */ = {
+		7839AEAB2DAF5628008B4EE6 /* WeatherApp_BY */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7839AE662DAF4D91008B4EE6 /* Build configuration list for PBXNativeTarget "WeatherApp_BY" */;
+			buildConfigurationList = 7839AEBF2DAF5629008B4EE6 /* Build configuration list for PBXNativeTarget "WeatherApp_BY" */;
 			buildPhases = (
-				7839AE4C2DAF4D91008B4EE6 /* Sources */,
-				7839AE4D2DAF4D91008B4EE6 /* Frameworks */,
-				7839AE4E2DAF4D91008B4EE6 /* Resources */,
+				7839AEA82DAF5628008B4EE6 /* Sources */,
+				7839AEA92DAF5628008B4EE6 /* Frameworks */,
+				7839AEAA2DAF5628008B4EE6 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				7839AE522DAF4D91008B4EE6 /* WeatherApp_BY */,
+				7839AEAE2DAF5628008B4EE6 /* WeatherApp_BY */,
 			);
 			name = WeatherApp_BY;
 			packageProductDependencies = (
+				7839AECC2DAF5692008B4EE6 /* SnapKit */,
 			);
 			productName = WeatherApp_BY;
-			productReference = 7839AE502DAF4D91008B4EE6 /* WeatherApp_BY.app */;
+			productReference = 7839AEAC2DAF5628008B4EE6 /* WeatherApp_BY.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		7839AE482DAF4D91008B4EE6 /* Project object */ = {
+		7839AEA42DAF5628008B4EE6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
-					7839AE4F2DAF4D91008B4EE6 = {
+					7839AEAB2DAF5628008B4EE6 = {
 						CreatedOnToolsVersion = 16.2;
 					};
 				};
 			};
-			buildConfigurationList = 7839AE4B2DAF4D91008B4EE6 /* Build configuration list for PBXProject "WeatherApp_BY" */;
+			buildConfigurationList = 7839AEA72DAF5628008B4EE6 /* Build configuration list for PBXProject "WeatherApp_BY" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 7839AE472DAF4D91008B4EE6;
+			mainGroup = 7839AEA32DAF5628008B4EE6;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				7839AECB2DAF5692008B4EE6 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 7839AE512DAF4D91008B4EE6 /* Products */;
+			productRefGroup = 7839AEAD2DAF5628008B4EE6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7839AE4F2DAF4D91008B4EE6 /* WeatherApp_BY */,
+				7839AEAB2DAF5628008B4EE6 /* WeatherApp_BY */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		7839AE4E2DAF4D91008B4EE6 /* Resources */ = {
+		7839AEAA2DAF5628008B4EE6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -128,7 +137,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		7839AE4C2DAF4D91008B4EE6 /* Sources */ = {
+		7839AEA82DAF5628008B4EE6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -138,7 +147,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		7839AE672DAF4D91008B4EE6 /* Debug */ = {
+		7839AEC02DAF5629008B4EE6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -152,6 +161,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -165,7 +175,7 @@
 			};
 			name = Debug;
 		};
-		7839AE682DAF4D91008B4EE6 /* Release */ = {
+		7839AEC12DAF5629008B4EE6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -179,6 +189,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -192,7 +203,7 @@
 			};
 			name = Release;
 		};
-		7839AE692DAF4D91008B4EE6 /* Debug */ = {
+		7839AEC22DAF5629008B4EE6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -255,7 +266,7 @@
 			};
 			name = Debug;
 		};
-		7839AE6A2DAF4D91008B4EE6 /* Release */ = {
+		7839AEC32DAF5629008B4EE6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -314,25 +325,44 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7839AE4B2DAF4D91008B4EE6 /* Build configuration list for PBXProject "WeatherApp_BY" */ = {
+		7839AEA72DAF5628008B4EE6 /* Build configuration list for PBXProject "WeatherApp_BY" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7839AE692DAF4D91008B4EE6 /* Debug */,
-				7839AE6A2DAF4D91008B4EE6 /* Release */,
+				7839AEC22DAF5629008B4EE6 /* Debug */,
+				7839AEC32DAF5629008B4EE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7839AE662DAF4D91008B4EE6 /* Build configuration list for PBXNativeTarget "WeatherApp_BY" */ = {
+		7839AEBF2DAF5629008B4EE6 /* Build configuration list for PBXNativeTarget "WeatherApp_BY" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7839AE672DAF4D91008B4EE6 /* Debug */,
-				7839AE682DAF4D91008B4EE6 /* Release */,
+				7839AEC02DAF5629008B4EE6 /* Debug */,
+				7839AEC12DAF5629008B4EE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7839AECB2DAF5692008B4EE6 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7839AECC2DAF5692008B4EE6 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7839AECB2DAF5692008B4EE6 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 7839AE482DAF4D91008B4EE6 /* Project object */;
+	rootObject = 7839AEA42DAF5628008B4EE6 /* Project object */;
 }
