@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Alamofire
 
 class ViewController: UIViewController {
     
@@ -76,7 +77,7 @@ class ViewController: UIViewController {
         return tableView
     }()
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchCurrentWeatherData()
@@ -110,7 +111,15 @@ class ViewController: UIViewController {
             }
         }.resume()
     }
-
+    
+    //Alamofire를 사용해서 서버 데이터를 불러오는 메소드
+    private func fetchDataByAlamofire<T: Decodable>(url: URL, completion: @escaping(Result<T, AFError>) -> Void) {
+        AF.request(url).responseDecodable(of: T.self) { response in
+            completion(response.result)
+        }
+        
+    }
+    
     //서버에서 현재 날씨 데이터를 불러오는 메서드
     private func fetchCurrentWeatherData() {
         var urlComponents = URLComponents(string: "https://api.openweathermap.org/data/2.5/weather")
@@ -121,27 +130,30 @@ class ViewController: UIViewController {
             return
         }
         
-        fetchData(url: url) { [weak self] (result: CurrentWeatherResult?) in
-            guard let self, let result else { return }
-            
-            //UI 작업은 메인스레드에서 실행(이걸 미작성 시 백그라운드에서 UI작업이 계속되어서 안 좋은 결과를 초래)
-            DispatchQueue.main.async {
-                self.tempLabel.text = "\(Int(result.main.temp))°C"
-                self.tempMinLabel.text = "최소: \(Int(result.main.tempMin))°C"
-                self.tempMaxLabel.text = "최대: \(Int(result.main.tempMax))°C"
-            }
-            
-            guard let imageURL = URL(string: "https://openweathermap.org/img/wn/\(result.weather[0].icon)@2x.png") else {
-                return
-            }
-            
-            //이미지를 로드하는 작업은 백그라운드 쓰레드 작업(async 안 써도 됨)
-            if let data = try? Data(contentsOf: imageURL) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self.imageView.image = image
+        //alamofire 사용
+        fetchDataByAlamofire(url: url) { [weak self] (result: Result<CurrentWeatherResult, AFError>) in
+            guard let self else { return }
+            switch result {
+            case .success(let result):
+                DispatchQueue.main.async {
+                    self.tempLabel.text = "\(Int(result.main.temp))°C"
+                    self.tempMinLabel.text = "최소: \(Int(result.main.tempMin))°C"
+                    self.tempMaxLabel.text = "최대: \(Int(result.main.tempMax))°C"
+                }
+                
+            guard let imageUrl = URL(string: "https://openweathermap.org/img/wn/\(result.weather[0].icon)@2x.png") else { return }
+                
+            //Alamofire를 사용한 이미지 로드
+                AF.request(imageUrl).responseData { response in
+                    if let data = response.data, let image = UIImage(data: data) {
+                        DispatchQueue.main.async {
+                            self.imageView.image = image
+                        }
                     }
                 }
+                    
+            case .failure(let error):
+                print("데이터 로드 실패: \(error)")
             }
         }
     }
@@ -156,17 +168,17 @@ class ViewController: UIViewController {
             return
         }
         
-        fetchData(url: url) { [weak self] (result: ForecastWeatherResult?) in
-            guard let self, let result else { return }
-            
-            //데이터 잘 불러왔는지 콘솔로 확인
-            for forecastWeather in result.list {
-                print("\(forecastWeather.main) \n \(forecastWeather.dtTxt) \n\n")
-            }
-            
-            DispatchQueue.main.async {
-                self.dataSource = result.list
-                self.tableView.reloadData() //이걸 써줘야 반영이 됨
+        //Alamofire로 fetchData 리팩토링
+        fetchDataByAlamofire(url: url) { [weak self] (result: Result<ForecastWeatherResult, AFError>) in
+            guard let self else { return }
+            switch result {
+            case .success(let result):
+                DispatchQueue.main.async {
+                    self.dataSource = result.list
+                    self.tableView.reloadData()
+                }
+            case .failure(let error):
+                print("에러 발생: \(error)")
             }
         }
     }
@@ -204,7 +216,7 @@ class ViewController: UIViewController {
         }
         
     }
-
+    
 }
 
 extension ViewController: UITableViewDelegate {
