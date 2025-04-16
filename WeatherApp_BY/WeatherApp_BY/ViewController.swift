@@ -10,6 +10,14 @@ import SnapKit
 
 class ViewController: UIViewController {
     
+    //공통 프로퍼티(쿼리 아이템) - 서울역 위경도
+    private let urlQueryItems: [URLQueryItem] = [
+        URLQueryItem(name: "lat", value: "37.5"),
+        URLQueryItem(name: "lon", value: "126.9"),
+        URLQueryItem(name: "appid", value: "66a6b097989fe90cfa31b045dd693356"),
+        URLQueryItem(name: "units", value: "metric")
+    ]
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "서울특별시"
@@ -20,7 +28,6 @@ class ViewController: UIViewController {
     
     private let tempLabel: UILabel = {
         let label = UILabel()
-        label.text = "20도"
         label.textColor = .white
         label.font = .boldSystemFont(ofSize: 50)
         return label
@@ -28,7 +35,6 @@ class ViewController: UIViewController {
     
     private let tempMinLabel: UILabel = {
         let label = UILabel()
-        label.text = "20도"
         label.textColor = .white
         label.font = .boldSystemFont(ofSize: 20)
         return label
@@ -36,7 +42,6 @@ class ViewController: UIViewController {
     
     private let tempMaxLabel: UILabel = {
         let label = UILabel()
-        label.text = "20도"
         label.textColor = .white
         label.font = .boldSystemFont(ofSize: 20)
         return label
@@ -53,16 +58,78 @@ class ViewController: UIViewController {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = .white
         return imageView
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        fetchCurrentWeatherData()
         print("화면로드됨")
     }
+    
+    //URLSession으로 서버 데이터를 불러오는 메서드
+    private func fetchData<T: Decodable>(url: URL, completion: @escaping (T?) -> Void) {
+        let session = URLSession(configuration: .default)
+        session.dataTask(with: URLRequest(url: url)) { data, response, error in
+            guard let data, error == nil else {
+                print("데이터 로드 실패")
+                completion(nil)
+                return
+            }
+            // http status code 성공범위는 200번대
+            let successRange = 200..<300
+            if let response = response as? HTTPURLResponse, successRange.contains(response.statusCode) {
+                //디코딩 코드
+                guard let decodedData = try? JSONDecoder().decode(T.self, from: data) else {
+                    //디코딩 실패시
+                    print("JSON 디코딩 실패")
+                    completion(nil)
+                    return
+                }
+                completion(decodedData)
+            } else {
+                print("응답 오류")
+                completion(nil)
+            }
+        }.resume()
+    }
 
+    //서버에서 현재 날씨 데이터를 불러오는 메서드
+    private func fetchCurrentWeatherData() {
+        var urlComponents = URLComponents(string: "https://api.openweathermap.org/data/2.5/weather")
+        urlComponents?.queryItems = self.urlQueryItems
+        
+        guard let url = urlComponents?.url else {
+            print("잘못된 URL")
+            return
+        }
+        
+        fetchData(url: url) { [weak self] (result: CurrentWeatherResult?) in
+            guard let self, let result else { return }
+            
+            //UI 작업은 메인스레드에서 실행(이걸 미작성 시 백그라운드에서 UI작업이 계속되어서 안 좋은 결과를 초래)
+            DispatchQueue.main.async {
+                self.tempLabel.text = "\(Int(result.main.temp))°C"
+                self.tempMinLabel.text = "최소: \(Int(result.main.tempMin))°C"
+                self.tempMaxLabel.text = "최대: \(Int(result.main.tempMax))°C"
+            }
+            
+            guard let imageURL = URL(string: "https://openweathermap.org/img/wn/\(result.weather[0].icon)@2x.png") else {
+                return
+            }
+            
+            //이미지를 로드하는 작업은 백그라운드 쓰레드 작업(async 안 써도 됨)
+            if let data = try? Data(contentsOf: imageURL) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self.imageView.image = image
+                    }
+                }
+            }
+        }
+    }
+    
     private func configureUI() {
         view.backgroundColor = .black
         [ titleLabel, tempLabel, tempStackView, imageView].forEach { view.addSubview($0) }
